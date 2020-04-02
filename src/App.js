@@ -14,7 +14,7 @@ function App() {
 
   return (
     <AppDiv>
-      <h1>Silly Simulator</h1>
+      <h1>React Silly Simulator</h1>
       {!showSimualtion ? (
         <ControlPanel
           {...{
