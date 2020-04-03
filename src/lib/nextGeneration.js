@@ -45,15 +45,21 @@ function nextGeneration(
     const newY =
       currentAgent.y + currentAgent.moveY + fullNumberPositiveOrNegative();
 
-    if (newX > 0 && newX < width) {
+    if (newX > 0 && newX < width - 25) {
       currentAgent.x = newX;
-      currentAgent.moveX += fullNumberPositiveOrNegative(1);
+      currentAgent.moveX += fullNumberPositiveOrNegative(2);
+      if (Math.abs(currentAgent.moveX) > 12) {
+        currentAgent.moveX += currentAgent.moveX > 0 ? -5 : 5;
+      }
     } else {
       currentAgent.moveX = -1 * currentAgent.moveX;
     }
-    if (newY > 0 && newY < height) {
+    if (newY > 15 && newY < height - 5) {
       currentAgent.y = newY;
-      currentAgent.moveY += fullNumberPositiveOrNegative(1);
+      currentAgent.moveY += fullNumberPositiveOrNegative(2);
+      if (Math.abs(currentAgent.moveY) > 12) {
+        currentAgent.moveY += currentAgent.moveY > 0 ? -5 : 5;
+      }
     } else {
       currentAgent.moveY = -1 * currentAgent.moveY;
     }

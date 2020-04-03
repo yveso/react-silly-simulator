@@ -7,8 +7,8 @@ import {
 function initialGeneration(howMany, howManyInfected, maxWidth, maxHeight) {
   return [...Array(howMany).keys()].map(i => {
     return {
-      x: fullNumberJustPositive(maxWidth),
-      y: fullNumberJustPositive(maxHeight),
+      x: fullNumberJustPositive(maxWidth - 50) + 20,
+      y: fullNumberJustPositive(maxHeight - 50) + 20,
       moveX: fullNumberPositiveOrNegative(10),
       moveY: fullNumberPositiveOrNegative(10),
       state: i < howManyInfected ? agentStates.INFECTED : agentStates.NOT_YET
