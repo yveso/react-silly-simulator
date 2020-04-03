@@ -3,10 +3,17 @@ import styled from "styled-components";
 
 const Label = styled.label`
   display: block;
+  margin: 5px 0px 15px 0px;
 `;
 
 const Div = styled.div`
   margin: 5px 10px 20px 10px;
+  padding-bottom: 10px;
+  font-size: 1.2rem;
+`;
+
+const Span = styled.span`
+  padding: 5px;
 `;
 
 function Slider({
@@ -27,7 +34,7 @@ function Slider({
           {!showPercentage ? value : Math.round(value * 100) + "%"}
         </strong>
       </Label>
-      <span>{!showPercentage ? min : Math.round(min * 100) + "%"}</span>
+      <Span>{!showPercentage ? min : Math.round(min * 100) + "%"}</Span>
       <input
         id={id}
         type="range"
@@ -37,7 +44,7 @@ function Slider({
         max={max}
         step={step}
       />
-      <span>{!showPercentage ? max : Math.round(max * 100) + "%"}</span>
+      <Span>{!showPercentage ? max : Math.round(max * 100) + "%"}</Span>
     </Div>
   );
 }
