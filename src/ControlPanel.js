@@ -47,7 +47,7 @@ function ControlPanel({
       />
       <Slider
         id="lengthOfInfection"
-        labelText="Dauer einer Infektion in Sekuden"
+        labelText="Dauer einer Infektion in Sekunden"
         value={lengthOfInfection}
         setValue={setLengthOfInfection}
         max={20}
