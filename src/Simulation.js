@@ -19,6 +19,7 @@ function Simulation({
   const fps = 24;
 
   const [agents, setAgents] = React.useState(() => newGeneration());
+  const [generationCount, setGenerationCount] = React.useState(1);
 
   useInterval(
     () => {
@@ -28,10 +29,11 @@ function Simulation({
           width,
           height,
           chanceOfInfection,
-          lengthOfInfection * fps,
+          lengthOfInfection,
           chanceOfDeath
         )
       );
+      setGenerationCount(generationCount + 1);
     },
 
     agents.filter(a => a.state === agentStates.INFECTED).length !== 0
@@ -50,16 +52,26 @@ function Simulation({
           <Agent key={i} {...a} />
         ))}
       </Svg>
-      <ul>
-        {Object.entries(agentStates).map(([key, state]) => (
-          <li key={key}>
-            {state.label} {state.emoji}:{" "}
-            <strong>{agents.filter(a => a.state === state).length}</strong>
-          </li>
-        ))}
-      </ul>
+      <div>
+        <strong>Generation #{generationCount}</strong>
+        <ul>
+          {Object.entries(agentStates).map(([key, state]) => (
+            <li key={key}>
+              {state.label} {state.emoji}:{" "}
+              <strong>{agents.filter(a => a.state === state).length}</strong>
+            </li>
+          ))}
+        </ul>
+      </div>
       <button onClick={backToSettings}>Zurück</button>
-      <button onClick={() => setAgents(newGeneration())}>Erneut starten</button>
+      <button
+        onClick={() => {
+          setAgents(newGeneration());
+          setGenerationCount(1);
+        }}
+      >
+        Erneut starten
+      </button>
     </div>
   );
 }
