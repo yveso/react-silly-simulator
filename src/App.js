@@ -8,8 +8,15 @@ import Footer from "./Footer";
 function App() {
   const [countAgents, setCountAgents] = React.useState(20);
   const [startingCountInfected, setStartingCountInfected] = React.useState(2);
+  const [startingCountReasonable, setStartingCountReasonable] = React.useState(
+    10
+  );
   const [chanceOfInfection, setChanceOfInfection] = React.useState(0.1);
-  const [lengthOfInfection, setLengthOfInfection] = React.useState(10);
+  const [
+    chanceOfInfectionReasonable,
+    setChanceOfInfectionReasonable
+  ] = React.useState(0.05);
+  const [lengthOfInfection, setLengthOfInfection] = React.useState(150);
   const [chanceOfDeath, setChanceOfDeath] = React.useState(0.1);
 
   const [showSimualtion, setShowSimulation] = React.useState(false);
@@ -25,8 +32,12 @@ function App() {
               setCountAgents,
               startingCountInfected,
               setStartingCountInfected,
+              startingCountReasonable,
+              setStartingCountReasonable,
               chanceOfInfection,
               setChanceOfInfection,
+              chanceOfInfectionReasonable,
+              setChanceOfInfectionReasonable,
               lengthOfInfection,
               setLengthOfInfection,
               chanceOfDeath,
@@ -39,7 +50,9 @@ function App() {
             {...{
               countAgents,
               startingCountInfected,
+              startingCountReasonable,
               chanceOfInfection,
+              chanceOfInfectionReasonable,
               lengthOfInfection,
               chanceOfDeath
             }}

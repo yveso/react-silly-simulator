@@ -2,21 +2,26 @@ const agentStates = {
   NOT_YET: {
     label: "Noch nicht infiziert",
     sort: 0,
-    emoji: "😀"
+    emoji: "😐"
   },
   INFECTED: {
     label: "Infiziert",
     sort: 1,
     emoji: "🤢"
   },
+  REASONABLE: {
+    label: "Vernünftig",
+    sort: 2,
+    emoji: "😷"
+  },
   Healed: {
     label: "Geheilt",
-    sort: 2,
+    sort: 4,
     emoji: "😎"
   },
   DEAD: {
     label: "Verstorben",
-    sort: 4,
+    sort: 5,
     emoji: "💀"
   }
 };

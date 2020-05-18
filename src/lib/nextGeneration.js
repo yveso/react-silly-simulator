@@ -6,6 +6,7 @@ function nextGeneration(
   width,
   height,
   chanceOfInfection,
+  chanceOfInfectionReasonable,
   lengthOfInfection,
   chanceOfDeath
 ) {
@@ -28,12 +29,21 @@ function nextGeneration(
       }
     }
 
-    if (currentAgent.state === agentStates.NOT_YET) {
+    if (
+      currentAgent.state === agentStates.NOT_YET ||
+      currentAgent.state === agentStates.REASONABLE
+    ) {
       for (let other of next.filter(x => x.state === agentStates.INFECTED)) {
         const dist = Math.sqrt(
           (currentAgent.x - other.x) ** 2 + (currentAgent.y - other.y) ** 2
         );
-        if (dist < 25 && Math.random() < chanceOfInfection) {
+        if (
+          dist < 25 &&
+          Math.random() <
+            (currentAgent.state === agentStates.REASONABLE
+              ? chanceOfInfectionReasonable
+              : chanceOfInfection)
+        ) {
           currentAgent.state = agentStates.INFECTED;
           break;
         }
