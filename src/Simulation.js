@@ -9,7 +9,9 @@ import nextGeneration from "./lib/nextGeneration";
 function Simulation({
   countAgents,
   startingCountInfected,
+  startingCountReasonable,
   chanceOfInfection,
+  chanceOfInfectionReasonable,
   lengthOfInfection,
   chanceOfDeath,
   backToSettings
@@ -29,6 +31,7 @@ function Simulation({
           width,
           height,
           chanceOfInfection,
+          chanceOfInfectionReasonable,
           lengthOfInfection,
           chanceOfDeath
         )
@@ -42,7 +45,13 @@ function Simulation({
   );
 
   function newGeneration() {
-    return initialGeneration(countAgents, startingCountInfected, width, height);
+    return initialGeneration(
+      countAgents,
+      startingCountInfected,
+      startingCountReasonable,
+      width,
+      height
+    );
   }
 
   return (

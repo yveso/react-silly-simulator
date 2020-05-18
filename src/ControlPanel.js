@@ -6,8 +6,12 @@ function ControlPanel({
   setCountAgents,
   startingCountInfected,
   setStartingCountInfected,
+  startingCountReasonable,
+  setStartingCountReasonable,
   chanceOfInfection,
   setChanceOfInfection,
+  chanceOfInfectionReasonable,
+  setChanceOfInfectionReasonable,
   lengthOfInfection,
   setLengthOfInfection,
   chanceOfDeath,
@@ -26,22 +30,40 @@ function ControlPanel({
         labelText="Größe der Gesamtbevölkerung"
         value={countAgents}
         setValue={setCountAgents}
-        min="2"
+        min={startingCountInfected + startingCountReasonable}
       />
       <Slider
         id="countStartingInfected"
-        labelText="Davon zu Beginn infiziert"
+        labelText="Anzahl Infizierte"
         value={startingCountInfected}
         setValue={setStartingCountInfected}
-        max={countAgents - 1}
+        max={countAgents - startingCountReasonable}
+      />
+      <Slider
+        id="countStartingReasonable"
+        labelText="Anzahl Vernünftige"
+        value={startingCountReasonable}
+        setValue={setStartingCountReasonable}
+        min="0"
+        max={countAgents - startingCountInfected}
       />
       <Slider
         id="chanceOfInfection"
         labelText="Wahrscheinlichkeit einer Ansteckung bei Kontakt"
         value={chanceOfInfection}
         setValue={setChanceOfInfection}
-        min="0"
+        min={chanceOfInfectionReasonable}
         max="1"
+        step="0.01"
+        showPercentage
+      />
+      <Slider
+        id="chanceOfInfectionReasonable"
+        labelText="Wahrscheinlichkeit einer Ansteckung bei Kontakt und Schutzmaßnahmen"
+        value={chanceOfInfectionReasonable}
+        setValue={setChanceOfInfectionReasonable}
+        min="0"
+        max={chanceOfInfection}
         step="0.01"
         showPercentage
       />
