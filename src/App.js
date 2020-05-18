@@ -11,6 +11,7 @@ function App() {
   const [startingCountReasonable, setStartingCountReasonable] = React.useState(
     10
   );
+  const [startingCountCovIdiot, setStartingCountCovIdiot] = React.useState(1);
   const [chanceOfInfection, setChanceOfInfection] = React.useState(0.1);
   const [
     chanceOfInfectionReasonable,
@@ -34,6 +35,8 @@ function App() {
               setStartingCountInfected,
               startingCountReasonable,
               setStartingCountReasonable,
+              startingCountCovIdiot,
+              setStartingCountCovIdiot,
               chanceOfInfection,
               setChanceOfInfection,
               chanceOfInfectionReasonable,
@@ -51,6 +54,7 @@ function App() {
               countAgents,
               startingCountInfected,
               startingCountReasonable,
+              startingCountCovIdiot,
               chanceOfInfection,
               chanceOfInfectionReasonable,
               lengthOfInfection,

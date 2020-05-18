@@ -8,6 +8,8 @@ function ControlPanel({
   setStartingCountInfected,
   startingCountReasonable,
   setStartingCountReasonable,
+  startingCountCovIdiot,
+  setStartingCountCovIdiot,
   chanceOfInfection,
   setChanceOfInfection,
   chanceOfInfectionReasonable,
@@ -18,6 +20,10 @@ function ControlPanel({
   setChanceOfDeath,
   submit
 }) {
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   function handleSubmit(event) {
     event.preventDefault();
     submit();
@@ -30,14 +36,18 @@ function ControlPanel({
         labelText="Größe der Gesamtbevölkerung"
         value={countAgents}
         setValue={setCountAgents}
-        min={startingCountInfected + startingCountReasonable}
+        min={
+          startingCountInfected +
+          startingCountReasonable +
+          startingCountCovIdiot
+        }
       />
       <Slider
         id="countStartingInfected"
         labelText="Anzahl Infizierte"
         value={startingCountInfected}
         setValue={setStartingCountInfected}
-        max={countAgents - startingCountReasonable}
+        max={countAgents - startingCountReasonable - startingCountCovIdiot}
       />
       <Slider
         id="countStartingReasonable"
@@ -45,7 +55,15 @@ function ControlPanel({
         value={startingCountReasonable}
         setValue={setStartingCountReasonable}
         min="0"
-        max={countAgents - startingCountInfected}
+        max={countAgents - startingCountInfected - startingCountCovIdiot}
+      />
+      <Slider
+        id="countStartingCovIdiot"
+        labelText="Anzahl Cov-Idioten"
+        value={startingCountCovIdiot}
+        setValue={setStartingCountCovIdiot}
+        min="0"
+        max={countAgents - startingCountInfected - startingCountReasonable}
       />
       <Slider
         id="chanceOfInfection"
