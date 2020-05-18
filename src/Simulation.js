@@ -10,6 +10,7 @@ function Simulation({
   countAgents,
   startingCountInfected,
   startingCountReasonable,
+  startingCountCovIdiot,
   chanceOfInfection,
   chanceOfInfectionReasonable,
   lengthOfInfection,
@@ -18,10 +19,14 @@ function Simulation({
 }) {
   const width = 500;
   const height = 500;
-  const fps = 24;
+  const fps = 12;
 
   const [agents, setAgents] = React.useState(() => newGeneration());
   const [generationCount, setGenerationCount] = React.useState(1);
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useInterval(
     () => {
@@ -49,6 +54,7 @@ function Simulation({
       countAgents,
       startingCountInfected,
       startingCountReasonable,
+      startingCountCovIdiot,
       width,
       height
     );

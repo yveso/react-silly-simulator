@@ -14,7 +14,12 @@ const agentStates = {
     sort: 2,
     emoji: "😷"
   },
-  Healed: {
+  COV_IDIOT: {
+    label: "Cov-Idiot",
+    sort: 3,
+    emoji: "🤬"
+  },
+  HEALED: {
     label: "Geheilt",
     sort: 4,
     emoji: "😎"
